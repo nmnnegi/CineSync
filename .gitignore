@@ -19,8 +19,8 @@
 .env.production.local
 .env
 
-# Large media files
-/public/video/*.mp4
+# Removing this exclusion to include video files
+# /public/video/*.mp4
 
 npm-debug.log*
 yarn-debug.log*
