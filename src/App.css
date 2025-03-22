@@ -38,8 +38,9 @@ ul {
   display: flex;
 }
 .container {
-  max-width: 90%;
   margin: auto;
+  max-width: 90%;
+  padding: 0 15px;
 }
 
 button {
@@ -101,7 +102,7 @@ p {
 .MovieBox:hover {
   cursor: pointer;
   border-left: 5px solid var(--secondary-color);
-  transform: scale3d(1.1, 1.1, 1) translate3d(6%, 0, 0) perspective(31.25em);
+  transform: scale3d(1.05, 1.05, 1) translate3d(4%, 0, 0) perspective(31.25em);
   box-shadow: 0px 0px 0.75em rgba(0, 0, 0, 0.9);
 }
 .MovieBox::after {
@@ -109,8 +110,8 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  width: 430px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 20, 0.4) 50%, rgba(83, 100, 141, 0) 100%);
   z-index: -1;
 }
@@ -122,6 +123,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 .MovieBox .text {
   padding: 70px 50px;
@@ -144,5 +146,210 @@ p {
   .MovieBox {
     width: 320px;
     height: 250px;
+  }
+  
+  .MovieBox:hover {
+    transform: scale3d(1.03, 1.03, 1) translate3d(2%, 0, 0) perspective(31.25em);
+  }
+  
+  .row {
+    flex-direction: column;
+  }
+  
+  .heading h1 {
+    font-size: 22px;
+  }
+  
+  .heading a {
+    font-size: 14px;
+  }
+  
+  /* Adjust MovieBox text sizes */
+  .MovieBox h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .MovieBox span {
+    font-size: 13px;
+  }
+  
+  .MovieBox .text {
+    padding: 50px 40px;
+  }
+  
+  .MovieBox button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .MovieBox {
+    width: 100%;
+    height: 220px;
+  }
+  
+  .MovieBox:hover {
+    transform: none;
+    border-left: 3px solid var(--secondary-color);
+  }
+  
+  .container {
+    max-width: 95%;
+    padding: 0 10px;
+  }
+  
+  .heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .heading a {
+    margin-top: 10px;
+  }
+  
+  /* Further reduce MovieBox text sizes */
+  .MovieBox h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .MovieBox span {
+    font-size: 12px;
+  }
+  
+  .MovieBox .text {
+    padding: 40px 30px;
+  }
+  
+  .MovieBox button {
+    margin-top: 8px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+}
+
+/* Tablet responsiveness */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .MovieBox {
+    width: 280px;
+    height: 230px;
+  }
+}
+
+/* Base responsive styling for all pages */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix flex container issues on mobile */
+@media only screen and (max-width: 768px) {
+  .flex, .flexSB {
+    flex-wrap: wrap;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  button {
+    padding: 12px 20px;
+  }
+  
+  .control-btn {
+    display: none;
+  }
+  
+  /* Improve heading and content spacing on mobile */
+  .heading {
+    margin-bottom: 15px;
+  }
+  
+  .heading h1 {
+    margin: 15px 0;
+  }
+}
+
+/* Extra small devices */
+@media only screen and (max-width: 480px) {
+  :root {
+    --font-size: 14px;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+  
+  button {
+    padding: 10px 15px;
+  }
+  
+  /* Tighter spacing for mobile */
+  .heading {
+    margin-bottom: 10px;
+  }
+  
+  .heading h1 {
+    margin: 10px 0;
+    font-size: 20px;
+  }
+}
+
+/* Section Spacing */
+section {
+  margin-bottom: 20px;
+}
+
+.upcome {
+  margin-top: 0;
+}
+
+.home + .upcome {
+  margin-top: 20px;
+}
+
+/* Responsive section spacing */
+@media only screen and (max-width: 768px) {
+  section {
+    margin-bottom: 15px;
+  }
+  
+  .upcome {
+    margin-top: 0;
+  }
+  
+  .home + .upcome {
+    margin-top: 10px;
+  }
+  
+  footer {
+    margin-top: 20px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  section {
+    margin-bottom: 10px;
+  }
+  
+  .upcome {
+    margin-top: 0;
+  }
+  
+  .home + .upcome {
+    margin-top: 5px;
+  }
+  
+  footer {
+    margin-top: 15px !important;
+    padding: 15px 0 !important;
   }
 }

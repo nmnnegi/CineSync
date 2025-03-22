@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import "./style.css";
 import { useParams } from "react-router-dom"; // useParams is used in v6
 import { homeData, recommended } from "../../dummyData";
@@ -11,8 +11,9 @@ const SinglePage = () => {
   const [activeTab, setActiveTab] = useState("details"); // State to track the active tab
   const [expanded, setExpanded] = useState(false); // State to track if the description is expanded
   const [isPlaying, setIsPlaying] = useState(false); // State to track if video is playing
-  const [videoRef, setVideoRef] = useState(null); // Reference to the video element
+  const videoElement = useRef(null); // Reference to the video element using useRef
 
+  // Use useEffect with better dependency tracking
   useEffect(() => {
     // Find the movie in homeData based on the ID
     const selectedItem = homeData.find((item) => item.id === parseInt(id));
@@ -22,32 +23,41 @@ const SinglePage = () => {
     
     // Reset video playing state when navigating between movies
     setIsPlaying(false);
+    
+    // Component cleanup
+    return () => {
+      if (videoElement.current) {
+        videoElement.current.pause();
+        videoElement.current.src = '';
+        videoElement.current.load();
+      }
+    };
   }, [id]);
 
-  // Function to handle tab changes
-  const handleTabChange = (tab) => {
+  // Function to handle tab changes - memoized with useCallback
+  const handleTabChange = useCallback((tab) => {
     setActiveTab(tab);
-  };
+  }, []);
 
-  // Function to toggle expanded description
-  const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
+  // Function to toggle expanded description - memoized with useCallback
+  const toggleExpand = useCallback(() => {
+    setExpanded(prev => !prev);
+  }, []);
 
-  // Function to handle video play/pause
-  const handleVideoPlayback = () => {
-    if (videoRef) {
+  // Function to handle video play/pause - memoized with useCallback
+  const handleVideoPlayback = useCallback(() => {
+    if (videoElement.current) {
       if (isPlaying) {
-        videoRef.pause();
+        videoElement.current.pause();
       } else {
-        videoRef.play();
+        videoElement.current.play();
       }
-      setIsPlaying(!isPlaying);
+      setIsPlaying(prev => !prev);
     }
-  };
+  }, [isPlaying]);
 
-  // Function to handle social sharing
-  const handleShare = (platform) => {
+  // Function to handle social sharing - memoized with useCallback
+  const handleShare = useCallback((platform) => {
     const shareUrl = window.location.href;
     const title = item ? `Check out ${item.name} on CineSync` : "Check this movie on CineSync";
     
@@ -70,31 +80,29 @@ const SinglePage = () => {
     if (shareLink) {
       window.open(shareLink, '_blank', 'width=600,height=400');
     }
-  };
+  }, [item]);
 
   // Function to render rating stars
-  const renderRatingStars = (rating) => {
+  const renderRatingStars = useMemo(() => {
+    if (!item) return null;
+    
     const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
+    const rating = Math.floor(item.rating / 2);
     
-    // Add full stars
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<i key={`star-${i}`} className="fas fa-star"></i>);
-    }
-    
-    // Add half star if needed
-    if (hasHalfStar) {
-      stars.push(<i key="half-star" className="fas fa-star-half-alt"></i>);
-    }
-    
-    // Add empty stars
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(<i key={`empty-star-${i}`} className="far fa-star"></i>);
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars.push(<i key={i} className="fas fa-star"></i>);
+      } else {
+        stars.push(<i key={i} className="far fa-star"></i>);
+      }
     }
     
     return stars;
+  }, [item]);
+
+  // When setting video reference, use the useRef rather than state
+  const setVideoReference = (element) => {
+    videoElement.current = element;
   };
 
   return (
@@ -122,7 +130,7 @@ const SinglePage = () => {
                   </div>
                 )}
                 <video 
-                  ref={ref => setVideoRef(ref)}
+                  ref={setVideoReference}
                   src={item.video} 
                   controls={isPlaying}
                   onPlay={() => setIsPlaying(true)}
@@ -137,7 +145,7 @@ const SinglePage = () => {
                     <div className="quality-badge">HD</div>
                     <div className="movie-rating">
                       <div className="star-rating">
-                        {renderRatingStars(item.rating)}
+                        {renderRatingStars}
                       </div>
                       <span className="rating-number">{item.rating}/5</span>
                     </div>

@@ -21,9 +21,13 @@ body {
   word-spacing: 5px;
   margin-left: 10px;
 }
+.singlePage {
+  padding-bottom: 0;
+}
 .singlePage .container {
   max-width: 80%;
   margin: auto;
+  padding-bottom: 20px;
 }
 
 /* Enhanced video player styling */
@@ -376,4 +380,179 @@ video {
 
 .soical img:hover {
   transform: translateY(-5px);
+}
+
+/* Responsive styles for SinglePage */
+@media only screen and (max-width: 768px) {
+  .singlePage .container {
+    max-width: 90%;
+    padding-bottom: 15px;
+  }
+  
+  .singleHeading h1 {
+    font-size: 24px;
+  }
+  
+  .singleHeading span {
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  
+  .video-container {
+    margin: 20px 0;
+  }
+  
+  .tab-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .tab-buttons button {
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+  
+  .similar-preview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .singlePage h3 {
+    font-size: 18px;
+  }
+  
+  .singlePage p {
+    font-size: 15px;
+    line-height: 22px;
+    margin-top: 10px;
+  }
+  
+  .expandable-section p {
+    line-height: 1.5;
+  }
+  
+  .play-button-wrapper span {
+    font-size: 14px;
+  }
+  
+  .movie-tabs {
+    margin: 25px 0;
+  }
+  
+  .tab-content {
+    padding: 20px;
+  }
+  
+  .soical {
+    margin: 20px 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .singlePage .container {
+    max-width: 95%;
+    padding-bottom: 10px;
+  }
+  
+  .singleHeading h1 {
+    font-size: 18px;
+  }
+  
+  .singleHeading span {
+    display: none;
+  }
+  
+  .movie-rating {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .star-rating {
+    margin-bottom: 5px;
+  }
+  
+  .quality-badge {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  
+  .tab-buttons button {
+    font-size: 12px;
+    padding: 6px 10px;
+    margin-right: 5px;
+  }
+  
+  .cast-members {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .similar-preview {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+  }
+  
+  .expandable-section p {
+    font-size: 14px;
+  }
+  
+  .genres-tags {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 5px 0;
+  }
+  
+  .singlePage h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .singlePage p {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 8px;
+  }
+  
+  .read-more {
+    font-size: 12px;
+  }
+  
+  .play-button {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .play-button i {
+    font-size: 20px;
+  }
+  
+  .play-button-wrapper span {
+    font-size: 12px;
+  }
+  
+  .similar-info h4 {
+    font-size: 12px;
+  }
+  
+  .similar-info span {
+    font-size: 10px;
+  }
+  
+  .movie-tabs {
+    margin: 15px 0;
+  }
+  
+  .tab-content {
+    padding: 15px 12px;
+  }
+  
+  .soical {
+    margin: 15px 0;
+    padding: 5px 0;
+  }
+  
+  .soical img {
+    width: 32px;
+    height: 32px;
+  }
 }

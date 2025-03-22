@@ -8,6 +8,7 @@
 }
 .homeContainer {
   position: relative;
+  margin-bottom: 0;
 }
 .coverImage {
   position: absolute;
@@ -111,7 +112,44 @@
 .mragin {
   margin-top: 50%;
 }
+.homeContainer p {
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+/* Button group styling */
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.mobile-trailer-btn {
+  display: none;
+  background: rgba(229, 8, 19, 0.8);
+  color: var(--text-color);
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.mobile-trailer-btn i {
+  margin-right: 5px;
+}
+
+.mobile-trailer-btn:hover {
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
 @media only screen and (max-width: 768px) {
+  .homeContainer {
+    margin-bottom: 0;
+  }
   .homeContainer h1 {
     font-size: 50px;
     margin: 0;
@@ -122,12 +160,14 @@
     height: 60vh !important;
   }
   .coverImage img {
-    width: 100vw;
+    width: 100%;
     height: 70vh !important;
+    object-fit: cover;
+    object-position: center;
   }
   .home .content {
     flex-direction: column;
-    padding: 50px;
+    padding: 40px 20px;
   }
   .home .row {
     width: 100%;
@@ -137,6 +177,105 @@
   }
   .mragin {
     margin-top: 0% !important;
+  }
+  .homeContainer .rating {
+    margin: 10px 0;
+  }
+  
+  /* Hide description on medium devices */
+  .homeContainer p {
+    display: none;
+  }
+  
+  /* Adjust text sizes */
+  .cast h4 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  
+  .rating label, .rating span {
+    font-size: 14px;
+  }
+  
+  /* Tighter component spacing */
+  .homeContainer .cast {
+    margin: 15px 0;
+  }
+  
+  /* Display the mobile trailer button */
+  .mobile-trailer-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+  
+  .button-group {
+    gap: 10px;
+    margin-top: 10px;
+  }
+}
+
+/* Small mobile styles */
+@media only screen and (max-width: 480px) {
+  .homeContainer {
+    margin-bottom: 0;
+  }
+  .homeContainer h1 {
+    font-size: 28px;
+  }
+  .home {
+    height: 45vh !important;
+  }
+  .coverImage img {
+    height: 55vh !important;
+    object-position: center 15%;
+  }
+  .home .content {
+    padding: 15px;
+    bottom: 10px;
+  }
+  .homeContainer .cast {
+    margin: 5px 0;
+  }
+  .cast h4 {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .cast h4 span {
+    font-size: 11px;
+  }
+  .rating i {
+    font-size: 13px;
+  }
+  .rating label {
+    font-size: 13px;
+    margin: 0 8px;
+  }
+  .rating span {
+    padding: 3px;
+    font-size: 11px;
+  }
+  .homeContainer button.primary-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .homeContainer button.primary-btn i {
+    font-size: 10px;
+  }
+  
+  .mobile-trailer-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  
+  .mobile-trailer-btn i {
+    font-size: 10px;
+  }
+  
+  .button-group {
+    gap: 8px;
+    margin-top: 8px;
   }
 }
 

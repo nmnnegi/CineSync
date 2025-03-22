@@ -1,5 +1,4 @@
 import React from "react"
-import { homeData } from "../../dummyData"
 import "./footer.css"
 
 const Footer = () => {
@@ -15,7 +14,7 @@ const Footer = () => {
               <li>FAQ</li>
               <li>Watch List</li>
             </ul>
-            <p>© 2025 CineSync. All Rights Reserved. All videos and shows on this platform are trademarks of, and all related images and content are the property of CineSync Inc. Duplication and copy of this is strictly prohibited. All rights reserved.</p>
+            <p className='copyright-text'>© 2025 CineSync. All Rights Reserved. All videos and shows on this platform are trademarks of, and all related images and content are the property of CineSync Inc. Duplication and copy of this is strictly prohibited. All rights reserved.</p>
           </div>
           <div className='box'>
             <h3>Follow Us</h3>

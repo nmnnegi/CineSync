@@ -263,9 +263,16 @@ header i:hover {
   header nav .flexSB {
     display: none;
   }
+  
   .account {
     display: none;
   }
+  
+  .logo img {
+    max-width: 120px;
+    margin-left: 15px;
+  }
+  
   .navMenu-list {
     display: flex;
     flex-direction: column;
@@ -273,15 +280,25 @@ header i:hover {
     top: 0;
     left: 0;
     background-color: var(--secondary-color);
-    width: 50%;
+    width: 70%;
     height: 100vh;
     z-index: 9999;
+    padding-top: 60px;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
   }
+  
+  .navMenu-list.active {
+    transform: translateX(0);
+  }
+  
   header ul li {
     align-items: left;
     margin-top: 30px;
     padding: 0 50px;
   }
+  
   .toggle {
     display: block;
     position: absolute;
@@ -291,5 +308,41 @@ header i:hover {
     margin: auto;
     cursor: pointer;
     background: none;
+    z-index: 10000;
+  }
+  
+  /* Search container mobile styling */
+  .search-container {
+    position: absolute;
+    right: 60px;
+    top: 23px;
+  }
+  
+  .search-container.expanded {
+    width: calc(100% - 120px);
+  }
+  
+  .search-container input {
+    width: 100%;
+  }
+}
+
+/* Small mobile styles */
+@media only screen and (max-width: 480px) {
+  .logo img {
+    max-width: 100px;
+    margin-left: 10px;
+  }
+  
+  .search-container {
+    right: 50px;
+  }
+  
+  .toggle {
+    right: 10px;
+  }
+  
+  header {
+    padding: 10px 0;
   }
 }

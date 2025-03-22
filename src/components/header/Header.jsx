@@ -30,8 +30,6 @@ const Header = () => {
       // If we're closing, reset the query
       setSearchQuery("")
     }
-    setSearchExpanded(false)
-    setSearchQuery("")
   }
   
   const handleSearchSubmit = (e) => {
@@ -49,6 +47,18 @@ const Header = () => {
     return false
   }
   
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (mobile && !e.target.closest('.navMenu-list') && !e.target.closest('.toggle')) {
+        setMobile(false)
+      }
+    }
+    
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [mobile])
+  
   return (
     <>
       <header className={scrolled ? "scrolled" : ""}>
@@ -58,9 +68,10 @@ const Header = () => {
               <img src='/images/logo.png' alt='CineSync Logo' />
             </div>
             
-            <ul className={mobile ? "navMenu-list" : "flexSB"} onClick={() => setMobile(false)}>
+            <ul className={mobile ? "navMenu-list active" : "flexSB"} onClick={() => setMobile(false)}>
               <li className={isActive("/") ? "active" : ""}>
                 <Link to='/'>Home</Link>
+                <span className="nav-indicator"></span>
               </li>
               <li className={isActive("/series") ? "active" : ""}>
                 <Link to='/series'>Series</Link>

@@ -38,20 +38,25 @@ const HomeCard = ({ item: { id, cover, name, rating, time, desc, starring, genre
                 {tags}
               </h4>
             </div>
-            <button className="primary-btn">
-              <i className="fas fa-play"></i> PLAY NOW
-            </button>
+            <div className="button-group">
+              <button className="primary-btn">
+                <i className="fas fa-play"></i> PLAY NOW
+              </button>
+              <Link to={`/singlepage/${id}`} className="mobile-trailer-btn">
+                <i className="fas fa-film"></i> TRAILER
+              </Link>
+            </div>
           </div>
           <div className="palyButton row">
-          <Link to={`/singlepage/${id}`}>
-            <button>
-              <div className="img">
-                <img src="./images/play-button.png" alt="" />
-                <img src="./images/play.png" className="change" alt="Play" />
-              </div>
-              WATCH TRAILER
-            </button>
-          </Link>
+            <Link to={`/singlepage/${id}`}>
+              <button>
+                <div className="img">
+                  <img src="./images/play-button.png" alt="" />
+                  <img src="./images/play.png" className="change" alt="Play" />
+                </div>
+                WATCH TRAILER
+              </button>
+            </Link>
           </div>
         </div>
       </div>

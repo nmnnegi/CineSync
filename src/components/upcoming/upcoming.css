@@ -1,0 +1,87 @@
+/* Upcoming Section Styling */
+.upcome {
+  padding: 5px 0;
+}
+
+.upcome .content {
+  margin-top: 10px;
+}
+
+/* Slick Slider Customizations */
+.slick-slider {
+  overflow: visible;
+  margin: 0 -10px;
+}
+
+.slick-dots {
+  bottom: -20px;
+}
+
+.slick-dots li button:before {
+  color: var(--secondary-color);
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--secondary-color);
+  opacity: 1;
+}
+
+/* Center mode slide styling */
+.slick-slide {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  transform: scale(0.9);
+  transition: all 0.3s ease;
+  padding: 0 5px;
+}
+
+.slick-current {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Mobile optimizations */
+@media only screen and (max-width: 768px) {
+  .upcome {
+    padding: 3px 0;
+  }
+  
+  .upcome .content {
+    margin-top: 5px;
+  }
+  
+  /* Add space for dots */
+  .slick-slider {
+    padding-bottom: 25px;
+  }
+  
+  .slick-dots {
+    bottom: -15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .upcome {
+    padding: 0;
+  }
+  
+  .upcome .content {
+    margin-top: 3px;
+  }
+  
+  /* Fix for mobile overflow */
+  .upcome .container {
+    overflow: hidden;
+    max-width: 100%;
+    padding: 0 5px;
+  }
+  
+  .slick-slider {
+    padding-bottom: 20px;
+  }
+  
+  .slick-dots {
+    bottom: -12px;
+  }
+} 

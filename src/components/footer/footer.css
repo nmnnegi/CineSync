@@ -31,10 +31,54 @@ footer .img {
 footer span {
   font-size: 12px;
 }
+
+/* Copyright text styling */
+.copyright-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 @media only screen and (max-width: 768px) {
   footer .container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 30px;
+  }
+  
+  /* Hide copyright text on tablets */
+  .copyright-text {
+    font-size: 11px;
+    display: none;
+  }
+  
+  /* Hide footer links on tablets */
+  footer ul.flex {
+    display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+  footer .container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    text-align: center;
+  }
+  
+  footer ul {
+    justify-content: center;
+    display: none; /* Hide footer links on mobile */
+  }
+  
+  footer ul li {
+    margin: 0 10px;
+  }
+  
+  footer .img {
+    margin: 0 auto;
+  }
+  
+  /* Ensure copyright text is hidden on mobile */
+  .copyright-text {
+    display: none;
   }
 }
